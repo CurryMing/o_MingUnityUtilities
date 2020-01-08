@@ -48,7 +48,6 @@ namespace o_Ming
 
                     direction = Vector3.Reflect(direction, hit.normal);
                     lr.SetPosition(2, hit.point + direction * lr_Length);
-                    originPosition = hit.point;
                 }
                 else
                 {
@@ -320,13 +319,6 @@ namespace o_Ming
             {
                 y += Time.deltaTime * 3.5f;
                 rectTransform.anchoredPosition = new Vector2(targetPoint.x, y);
-                //rectTransform.anchoredPosition =
-                //Vector2.Lerp
-                //(
-                //    rectTransform.anchoredPosition,
-                //    targetPoint,
-                //    3.5f * Time.deltaTime
-                //);
 
                 yield return null;
 
@@ -336,12 +328,6 @@ namespace o_Ming
                 }
             }
         }
-
-        //物体延迟消失效果
-        public static void DestroyObjectDelay(GameObject targetObject,float time)
-        {
-            Destroy(targetObject, time);
-        } 
 
     }
 }
