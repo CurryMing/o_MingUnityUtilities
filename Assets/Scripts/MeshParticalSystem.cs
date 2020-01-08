@@ -36,16 +36,15 @@ public class MeshParticalSystem : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 1;
             int spawnindex = AddQuad(mousePos);
-            
-
-
         }
 
     }
 
     private int AddQuad(Vector3 position)
     {
-        if (quadIndex >= MAX_QUAD_AMOU) return;//mesh full
+        if (quadIndex >= MAX_QUAD_AMOU)
+        {
+        }//mesh full
 
         UpdateQuad(quadIndex, position, 0f, new Vector3(1, 1));
 
