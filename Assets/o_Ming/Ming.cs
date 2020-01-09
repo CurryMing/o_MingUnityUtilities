@@ -133,25 +133,6 @@ namespace o_Ming
             else
                 origin.rotation = Quaternion.Euler(0f, 0f, angle - 90);
         }
-        public static void TurnToMouse3D(Transform origin, bool isReverse, LayerMask layerMask)
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100f, layerMask))
-            {
-                if (hit.collider != null)
-                {
-                    Vector3 turnToTarget = hit.point - origin.position;
-
-                    Quaternion lookRotation = Quaternion.LookRotation(turnToTarget);
-                    Vector3 rotation = lookRotation.eulerAngles;
-                    if(isReverse)
-                        origin.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-                    else
-                        origin.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-                }
-            }
-        }
 
 
         [Header("摇杆")]
