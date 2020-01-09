@@ -302,7 +302,7 @@ namespace o_Ming
 
             Text m_Text = textClone.GetComponentInChildren<Text>();
 
-            DestroyObjectDelay(textClone, 1.5f);
+            Destroy(textClone, 1.5f);
 
             m_Text.text = textContent;
 
