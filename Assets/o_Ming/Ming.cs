@@ -11,6 +11,8 @@ namespace o_Ming
 
     public class Ming : MonoBehaviour
     {
+
+
         //Reflection
         public static void DrawReflection2D(Vector2 originPosition, Vector2 direction, LineRenderer lr,float lr_Length)
         {
