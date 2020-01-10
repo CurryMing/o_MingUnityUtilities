@@ -269,23 +269,28 @@ namespace o_Ming
         }
 
 
-        //文字闪烁
+        //文字Fade
         public static void TextFade(Text text)
         {
-            text.color = Color.Lerp(text.color, Color.clear, 5 * Time.deltaTime);
+            text.color = Color.Lerp(text.color, Color.clear, 0.5f * Time.deltaTime);
         }
-        //文字出现效果
-        public static GameObject TextUp2D(GameObject textPrefabs, string textContent,Transform target)
+        //画布Fade
+        public static void CanvasFade(CanvasGroup canvas)
         {
-            Vector3 showPos = target.position + new Vector3(2.5f, -1, 0);
+            canvas.alpha = Mathf.Lerp(canvas.alpha, 0, 0.5f * Time.deltaTime);
+        }
 
-            GameObject textClone = Instantiate(textPrefabs, showPos, Quaternion.identity);
+        //文字出现效果
+        public static GameObject TextUp2D(GameObject textPrefabs, Vector3 target)
+        {
+            Vector3 showPos = target + new Vector3(2.5f, -1, 0);
 
-            Text m_Text = textClone.GetComponentInChildren<Text>();
+            GameObject canvasClone = Instantiate(textPrefabs, showPos, Quaternion.identity);
 
-            Destroy(textClone, 1.5f);
+            GameObject textClone = canvasClone.GetComponentInChildren<Text>().transform.gameObject;
 
-            m_Text.text = textContent;
+            //if(textClone!=null)
+            //textClone.GetComponent<RectTransform>().anchoredPosition = showPos;
 
             return textClone;
         }
@@ -293,21 +298,25 @@ namespace o_Ming
         public static IEnumerator TextAnimation(GameObject textClone)
         {
             RectTransform rectTransform;
-            rectTransform = textClone.GetComponent<RectTransform>();
+            GameObject textParent = textClone.GetComponentInParent<Image>().gameObject;
+            rectTransform = textParent.GetComponent<RectTransform>();
 
-            Vector2 targetPoint = rectTransform.anchoredPosition + Vector2.up;
+            Vector2 targetPoint = rectTransform.anchoredPosition + Vector2.up * 200;
             float y = rectTransform.anchoredPosition.y;
 
-            while (rectTransform.anchoredPosition.y < targetPoint.y)
+            while (y < targetPoint.y)
             {
-                y += Time.deltaTime * 3.5f;
+                y += Time.deltaTime * 100f;
                 rectTransform.anchoredPosition = new Vector2(targetPoint.x, y);
+
+                CanvasFade(textClone.GetComponentInParent<CanvasGroup>());
 
                 yield return null;
 
                 if (rectTransform.anchoredPosition.y > targetPoint.y - 0.05)
                 {
                     rectTransform.anchoredPosition = targetPoint;
+                    Destroy(textParent);
                 }
             }
         }
