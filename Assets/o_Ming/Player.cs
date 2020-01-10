@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
-        string saveTip = "Saved";
-        GameObject textClone = Ming.TextUp2D(textPrefab, saveTip, transform);
+        //string saveTip = "Saved";
+        GameObject textClone = Ming.TextUp2D(textPrefab, transform.position);
         StartCoroutine(Ming.TextAnimation(textClone));
     }
 
@@ -30,8 +30,8 @@ public class Player : MonoBehaviour
         position.y = playerData.position[1];
         position.z = playerData.position[2];
         transform.position = position;
-        string loadedTip = "Loaded";
-        GameObject textClone = Ming.TextUp2D(textPrefab, loadedTip, transform);
+        //string loadedTip = "Loaded";
+        GameObject textClone = Ming.TextUp2D(textPrefab, transform.position);
         StartCoroutine(Ming.TextAnimation(textClone));
     }
 }

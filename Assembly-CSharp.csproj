@@ -69,6 +69,7 @@
     <Compile Include="Assets\o_Ming\JoyStick.cs" />
     <Compile Include="Assets\o_Ming\LaunchArcRenderer.cs" />
     <Compile Include="Assets\o_Ming\LevelLoader.cs" />
+    <Compile Include="Assets\o_Ming\LongClickButton.cs" />
     <Compile Include="Assets\o_Ming\Ming.cs" />
     <Compile Include="Assets\o_Ming\MingText.cs" />
     <Compile Include="Assets\o_Ming\Ming_D.cs" />
