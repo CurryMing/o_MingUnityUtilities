@@ -34,9 +34,6 @@ public class LongClickButton : MonoBehaviour,IPointerUpHandler, IPointerDownHand
         numText.text = num.ToString("f1");
     }
 
-
-
-
     public void OnPointerDown(PointerEventData ped)
     {
         pointerDown = true;

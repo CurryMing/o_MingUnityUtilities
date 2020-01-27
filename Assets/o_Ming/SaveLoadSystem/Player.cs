@@ -5,17 +5,13 @@ using o_Ming;
 
 public class Player : MonoBehaviour
 {
-    public GameObject textPrefab;
-
     public int level = 1;
     public int health = 100;
 
+    //UI Methods
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
-        //string saveTip = "Saved";
-        GameObject textClone = Ming.TextUp2D(textPrefab, transform.position);
-        StartCoroutine(Ming.TextAnimation(textClone));
     }
 
     public void LoadPlayer()
@@ -30,8 +26,6 @@ public class Player : MonoBehaviour
         position.y = playerData.position[1];
         position.z = playerData.position[2];
         transform.position = position;
-        //string loadedTip = "Loaded";
-        GameObject textClone = Ming.TextUp2D(textPrefab, transform.position);
-        StartCoroutine(Ming.TextAnimation(textClone));
     }
+    
 }

@@ -63,21 +63,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\OrbitCamera.cs" />
+    <Compile Include="Assets\Scripts\3D\OrbitCamera.cs" />
+    <Compile Include="Assets\Scripts\3D\PlayerTurn.cs" />
     <Compile Include="Assets\Scripts\3D\RelativeMovement.cs" />
     <Compile Include="Assets\Scripts\MeshParticalSystem.cs" />
     <Compile Include="Assets\o_Ming\BallLauncher.cs" />
     <Compile Include="Assets\o_Ming\Bezier.cs" />
-    <Compile Include="Assets\o_Ming\JoyStick.cs" />
+    <Compile Include="Assets\o_Ming\JoyStick\JoyStick.cs" />
     <Compile Include="Assets\o_Ming\LaunchArcRenderer.cs" />
-    <Compile Include="Assets\o_Ming\LevelLoader.cs" />
+    <Compile Include="Assets\o_Ming\LoadScene\LevelLoader.cs" />
     <Compile Include="Assets\o_Ming\LongClickButton.cs" />
-    <Compile Include="Assets\o_Ming\Ming.cs" />
+    <Compile Include="Assets\o_Ming\Ming\Ming.cs" />
+    <Compile Include="Assets\o_Ming\Ming\Ming_D.cs" />
     <Compile Include="Assets\o_Ming\MingText.cs" />
-    <Compile Include="Assets\o_Ming\Ming_D.cs" />
-    <Compile Include="Assets\o_Ming\Player.cs" />
-    <Compile Include="Assets\o_Ming\PlayerData.cs" />
-    <Compile Include="Assets\o_Ming\SaveSystem.cs" />
+    <Compile Include="Assets\o_Ming\SaveLoadSystem\Player.cs" />
+    <Compile Include="Assets\o_Ming\SaveLoadSystem\PlayerData.cs" />
+    <Compile Include="Assets\o_Ming\SaveLoadSystem\SaveSystem.cs" />
     <None Include="Assets\Save.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/UnityGames/o_Ming_Package/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

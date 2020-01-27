@@ -231,8 +231,8 @@ GameObject:
   - component: {fileID: 492643521}
   - component: {fileID: 492643520}
   - component: {fileID: 492643519}
-  - component: {fileID: 492643518}
   - component: {fileID: 492643522}
+  - component: {fileID: 492643518}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -265,12 +265,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 492643516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d470afa87dc9104b9a6f1fdc9714e39, type: 3}
+  m_Script: {fileID: 11500000, guid: e63105f442064064dbf10990f6e73953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCamera: {fileID: 64521510}
-  moveSpeed: 2
-  smoothTurn: 25
 --- !u!136 &492643519
 CapsuleCollider:
   m_ObjectHideFlags: 0

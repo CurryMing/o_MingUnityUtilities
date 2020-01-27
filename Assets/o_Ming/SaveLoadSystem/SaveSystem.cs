@@ -2,12 +2,14 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
+
+//静态类，工具类
 public static class SaveSystem
 {
     public static void SavePlayer(Player player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/player.fun";
+        string path = Application.persistentDataPath + "/player.oMing";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData playerData = new PlayerData(player);
@@ -19,7 +21,7 @@ public static class SaveSystem
 
     public static PlayerData LoadPlayer()
     {
-        string path = Application.persistentDataPath + "/player.fun";
+        string path = Application.persistentDataPath + "/player.oMing";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();

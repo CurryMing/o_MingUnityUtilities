@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RelativeMovement : MonoBehaviour
 {
-    [SerializeField] private Transform targetCamera;
+    public Transform targetCamera;
 
     Vector3 movement = Vector3.zero;
 

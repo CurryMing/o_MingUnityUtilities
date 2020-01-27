@@ -34,7 +34,7 @@ public class MingText : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         lr = line.GetComponent<LineRenderer>();
-
+        Debug.Log(Application.persistentDataPath);
     }
 
     private void Update()
