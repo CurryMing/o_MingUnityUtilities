@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\OrbitCamera.cs" />
+    <Compile Include="Assets\Scripts\3D\RelativeMovement.cs" />
     <Compile Include="Assets\Scripts\MeshParticalSystem.cs" />
     <Compile Include="Assets\o_Ming\BallLauncher.cs" />
     <Compile Include="Assets\o_Ming\Bezier.cs" />
