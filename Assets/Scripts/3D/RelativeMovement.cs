@@ -12,7 +12,12 @@ public class RelativeMovement : MonoBehaviour
 
     public float smoothTurn;
 
-    Vector3 mouseDir = Vector3.zero;
+    private Rigidbody rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
@@ -24,21 +29,21 @@ public class RelativeMovement : MonoBehaviour
             movement.x = horInput;
             movement.z = verInput;
 
-            transform.Translate(movement * moveSpeed * Time.deltaTime,Space.World);
+            movement = movement.normalized;
+
+            transform.Translate(movement * moveSpeed * Time.deltaTime,Space.Self);
+            //rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
+            //GetComponent<CharacterController>().Move(rb.position + movement * moveSpeed * Time.deltaTime);
 
             Quaternion tmp = targetCamera.rotation;
             targetCamera.eulerAngles = new Vector3(0f, targetCamera.eulerAngles.y, 0f);
 
-            mouseDir = new Vector3(0, Input.GetAxis("Mouse X"), 0);
-            mouseDir = targetCamera.TransformDirection(mouseDir);
-
-            
-
+            movement = targetCamera.TransformDirection(movement);
             targetCamera.rotation = tmp;
 
-            Quaternion dir = Quaternion.LookRotation(mouseDir);
+            Quaternion dir = Quaternion.LookRotation(movement);
+            //transform.rotation = Quaternion.LookRotation(movement);
             transform.rotation = Quaternion.Lerp(transform.rotation, dir, smoothTurn * Time.deltaTime);
-            
         }
     }
 }
