@@ -13,7 +13,7 @@ namespace o_Ming
             MouseY = 2
         }
 
-        //
+        //转向Target
         public static void LookToTarget(Transform origin, Vector3 target, float smoothTurn)
         {
             Vector3 t_dir = target - origin.position;
@@ -21,7 +21,7 @@ namespace o_Ming
             Vector3 newRotation = Quaternion.Lerp(origin.rotation, lookRotation, smoothTurn * Time.deltaTime).eulerAngles;
             origin.rotation = Quaternion.Euler(0f, newRotation.y, 0f);
         }
-        //
+        //面向鼠标
         public static void TurnToMouse3D(Transform origin, bool isReverse, LayerMask layerMask)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

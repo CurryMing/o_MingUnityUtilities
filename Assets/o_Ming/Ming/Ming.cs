@@ -71,7 +71,6 @@ namespace o_Ming
                 originRb.velocity = CalculateProjectileVelocity(originRb.position, hitInfo.point, t);
             }
         }
-
         static Vector2 CalculateProjectileVelocity(Vector2 origin, Vector2 target, float time)
         {
             Vector2 distance = target - origin;
@@ -177,6 +176,8 @@ namespace o_Ming
             m_joystickImage.rectTransform.anchoredPosition = Vector2.zero;
         }
 
+
+        //PlayerPrefs   &&    .txt
         [Header("Save and Load")]
         private const string SAVE_SEPARATOR = "#SAVE-VALUE#";
 
@@ -196,7 +197,6 @@ namespace o_Ming
             File.WriteAllText(Application.dataPath + "/Save.txt", saveString);
             Debug.Log("Saved!");
         }
-
         public static Vector3 LoadPosition()
         {
             Vector3 targetPosition = Vector3.zero;

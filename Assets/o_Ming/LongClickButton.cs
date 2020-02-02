@@ -28,6 +28,7 @@ public class LongClickButton : MonoBehaviour,IPointerUpHandler, IPointerDownHand
         }
     }
 
+    //UIMethod
     public void Plus()
     {
         num += Time.deltaTime;

@@ -53,21 +53,68 @@ public static class SaveSystem
         FileStream stream = File.Create(Application.persistentDataPath + "/Game_Data/inventory.txt");
 
         var json = JsonUtility.ToJson(_Inventory);
-
+        //序列化
         formatter.Serialize(stream, json);
+
+        SaveItem(_Inventory);
 
         stream.Close();
     }
     public static void LoadInventory(Inventory _Inventory)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        if(File.Exists(Application.persistentDataPath + "/Game_Data/inventory.txt"))
+        if (File.Exists(Application.persistentDataPath + "/Game_Data/inventory.txt"))
         {
             FileStream stream = File.Open(Application.persistentDataPath + "/Game_Data/inventory.txt", FileMode.Open);
 
-            JsonUtility.FromJsonOverwrite((string)formatter.Deserialize(stream), _Inventory);
+            JsonUtility.FromJsonOverwrite(formatter.Deserialize(stream) as string, _Inventory);
+            LoadItem(_Inventory);
 
             stream.Close();
+        }
+    }
+
+    public static void SaveItem(Inventory inventory)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();//二进制
+        string path = Application.persistentDataPath + "/Game_Data/item.txt";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        int[] itemCounts = new int[inventory.itemList.Count];
+        for (int i = 0; i < inventory.itemList.Count; i++)
+        {
+            if (inventory.itemList[i] == null)
+            {
+                continue;
+            }
+            itemCounts[i] = inventory.itemList[i].itemCount;
+        }
+
+        formatter.Serialize(stream, itemCounts);
+        stream.Close();
+    }
+    public static void LoadItem(Inventory inventory)
+    {
+        string path = Application.persistentDataPath + "/Game_Data/item.txt";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            int[] itemCounts = formatter.Deserialize(stream) as int[];
+
+            for (int i = 0; i < inventory.itemList.Count; i++)
+            {
+                if (inventory.itemList[i] == null)
+                    continue;
+                inventory.itemList[i].itemCount = itemCounts[i];
+            }
+
+            stream.Close();
+        }
+        else
+        {
+            Debug.LogError("Save File is not found in" + path);
         }
     }
 }
