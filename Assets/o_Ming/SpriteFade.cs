@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpriteFade : MonoBehaviour
 {
-    public float spriteFadeTime;
+    public float spriteFadeTime = 0.01f;
 
     private SpriteRenderer sr;
 

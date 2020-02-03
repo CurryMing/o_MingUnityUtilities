@@ -6,17 +6,21 @@ using UnityEngine.UI;
 public class o_Player : MonoBehaviour
 {
     #region
+    private Camera mainCamera;
+
     private Vector2 movement = Vector2.zero;
+
+    private Animator playerAnim;
 
     private Rigidbody2D rb;
     public float speed;
 
     [Header("UpgradeSpeed")]
-    public float upSpeed;
-    public float upSpeedTime = 1f;
     public Text upSpeedStayTime;
     public Animator anim;
-    public float spriteUpSpeedRate = 0.05f;
+    public float upSpeed = 5f;
+    public float upSpeedTime = 5f;
+    public float spriteUpSpeedRate = 0.25f;
     private GameObject[] spritePoolUpSpeed = new GameObject[20];
     private float upCounter = 0;
 
@@ -26,10 +30,9 @@ public class o_Player : MonoBehaviour
 
     private SpriteRenderer playerSr;
     [Header("Dash")]
-    public float spriteRate = 0.05f;
-    //public float spriteLifeTime = 0.08f;
-    public float dashTime;
-    public float dashSpeed;
+    public float spriteRate = 0.02f;
+    public float dashTime = 0.1f;
+    public float dashSpeed = 20f;
     public float dashRate = 2f;
     public Image coolImage;
     public Text coolText;
@@ -40,6 +43,11 @@ public class o_Player : MonoBehaviour
 
     private void Awake()
     {
+        playerAnim = GetComponent<Animator>();
+
+        mainCamera = FindObjectOfType<Camera>();
+        Debug.Log(mainCamera.gameObject.name);
+
         Transform SpritePool = GameObject.Find("SpritePool").transform;
         for (int i = 0; i < 20f; i++)
         {
@@ -64,14 +72,14 @@ public class o_Player : MonoBehaviour
 
         dashRateCounter -= Time.deltaTime;
 
-        UpdateSkillUI();
+        //UpdateSkillUI();
 
         if (Input.GetKeyDown(KeyCode.Space) && dashRateCounter <= 0f && movement != Vector2.zero)
         {
-            dashRateCounter = dashRate;
+            mouPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             StartCoroutine(Dash());
         }
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) && dashRateCounter <= 0f)
         {
             StartCoroutine(UpGradeSpeed());
         }
@@ -112,8 +120,11 @@ public class o_Player : MonoBehaviour
     private void PlayerMove()
     {
         movement = movement.normalized;
-        if (movement.x != 0)
+        if (movement != Vector2.zero)
         {
+            //playerAnim.SetFloat("H", movement.x);
+            //playerAnim.SetFloat("V", movement.y);
+
             if (movement.x < 0)
             {
                 playerSr.flipX = true;
@@ -125,14 +136,16 @@ public class o_Player : MonoBehaviour
         }
 
         rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+        playerAnim.SetFloat("speed", movement.magnitude);
     }
 
     private IEnumerator Dash()
     {
+        dashRate = 2;
+        dashRateCounter = dashRate;
         spriteRate = 0.02f;
         StartCoroutine(DashSprites());
         couter = 0;
-        mouPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         while (couter <= dashTime)
         {
@@ -158,7 +171,10 @@ public class o_Player : MonoBehaviour
 
     private IEnumerator UpGradeSpeed()
     {
-        spriteRate = 0.2f;
+        spriteRate = 0.25f;
+        dashRate = 5;
+        dashRateCounter = dashRate;
+
         StartCoroutine(UpSpeedSprites());
         upCounter = upSpeedTime;
         //tr.enabled = true;
@@ -179,7 +195,7 @@ public class o_Player : MonoBehaviour
 
             spritePoolUpSpeed[i].transform.position = transform.position;
 
-            yield return new WaitForSeconds(spriteUpSpeedRate);
+            yield return new WaitForSeconds(spriteRate);
         }
     }
 }

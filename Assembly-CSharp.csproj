@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Car.cs" />
     <Compile Include="Assets\Scripts\3D\OrbitCamera.cs" />
     <Compile Include="Assets\Scripts\3D\PlayerTurn.cs" />
     <Compile Include="Assets\Scripts\3D\RelativeMovement.cs" />
@@ -85,6 +86,8 @@
     <Compile Include="Assets\o_Ming\o_Axe.cs" />
     <Compile Include="Assets\o_Ming\o_Item.cs" />
     <Compile Include="Assets\o_Ming\o_Player.cs" />
+    <None Include="Assets\AssetStore\BayatGames\Free Platform Game Assets\Readme.txt" />
+    <None Include="Assets\AssetStore\Pinneaple Dev\Documentation\READ ME.txt" />
     <None Include="Assets\Save.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/UnityGames/o_Ming_Package/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
