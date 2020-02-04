@@ -84,8 +84,8 @@
     <Compile Include="Assets\o_Ming\ScriptableObject\Item.cs" />
     <Compile Include="Assets\o_Ming\SpriteFade.cs" />
     <Compile Include="Assets\o_Ming\o_Axe.cs" />
+    <Compile Include="Assets\o_Ming\o_Dash.cs" />
     <Compile Include="Assets\o_Ming\o_Item.cs" />
-    <Compile Include="Assets\o_Ming\o_Player.cs" />
     <None Include="Assets\AssetStore\BayatGames\Free Platform Game Assets\Readme.txt" />
     <None Include="Assets\AssetStore\Pinneaple Dev\Documentation\READ ME.txt" />
     <None Include="Assets\Save.txt" />

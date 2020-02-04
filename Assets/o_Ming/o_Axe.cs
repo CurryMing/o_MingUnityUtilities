@@ -39,7 +39,7 @@ public class o_Axe : MonoBehaviour
 
     private void Awake()
     {
-        player = FindObjectOfType<o_Player>().transform;
+        player = FindObjectOfType<o_Dash>().transform;
         rb2D = GetComponent<Rigidbody2D>();
         targetPos = transform.position;
     }

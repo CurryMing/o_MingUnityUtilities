@@ -18,7 +18,7 @@ public class Car : MonoBehaviour
 
     private void Awake()
     {
-        player = FindObjectOfType<o_Player>().transform;
+        player = FindObjectOfType<o_Dash>().transform;
         for (int i = 0; i < sitImage.Length; i++)
         {
             sitImage[i] = sitPanel.transform.GetChild(i).GetComponent<Image>();
@@ -104,7 +104,7 @@ public class Car : MonoBehaviour
         isSitting = false;
         sitPanel.SetActive(false);
         ResetImage();
-        player.GetComponent<o_Player>().enabled = true;
+        player.GetComponent<o_Dash>().enabled = true;
         Debug.Log("下车");
     }
     public void ChangeSit()
