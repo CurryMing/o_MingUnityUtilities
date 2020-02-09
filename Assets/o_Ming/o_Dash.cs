@@ -70,6 +70,11 @@ public class o_Dash : MonoBehaviour
         playerSr = GetComponent<SpriteRenderer>();
     }
 
+    private void Start()
+    {
+        Debug.Log(GameManager.Instance.Score);
+    }
+
     private void Update()
     {
         CameraFollow();
